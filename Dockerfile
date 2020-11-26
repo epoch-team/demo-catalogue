@@ -17,7 +17,7 @@ ENV	SERVICE_USER=myuser \
 
 RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
 	adduser -g "${SERVICE_NAME} user" -D -H -G ${SERVICE_GROUP} -s /sbin/nologin -u ${SERVICE_UID} ${SERVICE_USER} && \
-	apk add --update libcap
+	apk add --update libcap sudo
 
 WORKDIR /
 COPY --from=0 /app /app
@@ -25,7 +25,7 @@ COPY images/ /images/
 
 RUN	chmod +x /app && \
 	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
-	apk add sudo && sudo setcap 'cap_net_bind_service=+ep' /app
+	sudo setcap 'cap_net_bind_service=+ep' /app
 
 USER ${SERVICE_USER}
 
