@@ -25,7 +25,7 @@ COPY images/ /images/
 
 RUN	chmod +x /app && \
 	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
-	sudo setcap 'cap_net_bind_service=+ep' /app
+	sudo su - && setcap 'cap_net_bind_service=+ep' /app
 
 USER ${SERVICE_USER}
 
