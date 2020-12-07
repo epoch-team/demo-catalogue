@@ -9,7 +9,8 @@ RUN export GIT_SSL_NO_VERIFY=1
 RUN gvt restore
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app ./cmd/cataloguesvc
 
-FROM alpine:3.4
+#FROM alpine:3.4
+FROM alpine:edge
 
 ENV	SERVICE_USER=myuser \
 	SERVICE_UID=10001 \
@@ -20,7 +21,7 @@ RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP}
 RUN	adduser -g "${SERVICE_NAME} user" -D -H -G ${SERVICE_GROUP} -s /sbin/nologin -u ${SERVICE_UID} ${SERVICE_USER} 
 RUN     apk update
 RUN     apk upgrade
-RUN	apk add libcap
+RUN	apk add --update libcap
 
 WORKDIR /
 COPY --from=0 /app /app
