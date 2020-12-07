@@ -5,9 +5,8 @@ WORKDIR /go/src/github.com/microservices-demo/catalogue
 
 RUN go get -u github.com/FiloSottile/gvt
 
-RUN export GIT_SSL_NO_VERIFY=1 
-RUN gvt restore
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app ./cmd/cataloguesvc
+RUN export GIT_SSL_NO_VERIFY=1 && gvt restore && \
+    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app ./cmd/cataloguesvc
 
 FROM alpine:3.4
 
@@ -16,17 +15,17 @@ ENV	SERVICE_USER=myuser \
 	SERVICE_GROUP=mygroup \
 	SERVICE_GID=10001
 
-RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} 
-RUN	adduser -g "${SERVICE_NAME} user" -D -H -G ${SERVICE_GROUP} -s /sbin/nologin -u ${SERVICE_UID} ${SERVICE_USER} 
-RUN	apk add --update libcap
+RUN	addgroup -g ${SERVICE_GID} ${SERVICE_GROUP} && \
+	adduser -g "${SERVICE_NAME} user" -D -H -G ${SERVICE_GROUP} -s /sbin/nologin -u ${SERVICE_UID} ${SERVICE_USER} && \
+	apk add --update libcap sudo
 
 WORKDIR /
 COPY --from=0 /app /app
 COPY images/ /images/
 
-RUN	chmod +x /app 
-RUN	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images 
-RUN	setcap 'cap_net_bind_service=+ep' /app
+RUN	chmod +x /app && \
+	chown -R ${SERVICE_USER}:${SERVICE_GROUP} /app /images && \
+	sudo su - && setcap 'cap_net_bind_service=+ep' /app
 
 USER ${SERVICE_USER}
 
