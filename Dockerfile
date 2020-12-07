@@ -10,7 +10,7 @@ RUN gvt restore
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /app ./cmd/cataloguesvc
 
 #FROM alpine:3.4
-FROM alpine:edge
+FROM alpine:3.9
 
 ENV	SERVICE_USER=myuser \
 	SERVICE_UID=10001 \
