@@ -6,10 +6,10 @@ WORKDIR /go/src/github.com/microservices-demo/catalogue
 #WORKDIR /go/src/github.com/microservices-demo/catalogue/cmd/cataloguesvc/
 
 #proxy setting
-ENV     http_proxy=http://proxygate2.nic.nec.co.jp:8080/ \
-        HTTP_PROXY=http://proxygate2.nic.nec.co.jp:8080/ \
-        https_proxy=http://proxygate2.nic.nec.co.jp:8080/ \
-        HTTPS_PROXY=http://proxygate2.nic.nec.co.jp:8080
+#ENV     http_proxy=http://proxygate2.nic.nec.co.jp:8080/ \
+#        HTTP_PROXY=http://proxygate2.nic.nec.co.jp:8080/ \
+#        https_proxy=http://proxygate2.nic.nec.co.jp:8080/ \
+#        HTTPS_PROXY=http://proxygate2.nic.nec.co.jp:8080
 
 RUN go get -u github.com/FiloSottile/gvt
 #RUN gvt restore && \
