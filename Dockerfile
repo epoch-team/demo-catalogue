@@ -6,8 +6,8 @@ WORKDIR /go/src/github.com/microservices-demo/catalogue
 
 RUN   ls  -l  /usr/bin/apt*
 
-RUN   /usr/bin/apt-get update
-RUN   /usr/bin/apt-get install -y  ca-certificates
+RUN   "/usr/bin/apt-get"    "update"
+RUN   "/usr/bin/apt-get"    "install"   "-y"    "ca-certificates"
 COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
 RUN   update-ca-certificates
 
