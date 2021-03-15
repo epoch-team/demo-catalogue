@@ -1,7 +1,7 @@
 #FROM golang:1.7-alpine3.5
 #FROM golang:1.7
 #FROM golang
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 # gitが通ったら元に戻す
 #COPY . /go/src/github.com/microservices-demo/catalogue
@@ -14,8 +14,8 @@ RUN   "/usr/bin/apt-get"    "install"   "-y"    "ca-certificates"
 COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
 RUN   update-ca-certificates
 
-RUN "/usr/bin/add-apt-repository" "ppa:git-core/ppa"
-RUN "/usr/bin/apt-get"    "update"
+#RUN "/usr/bin/add-apt-repository" "ppa:git-core/ppa"
+#RUN "/usr/bin/apt-get"    "update"
 ENV DEBIAN_FRONTEND=noninteractive
 RUN   "/usr/bin/apt-get"    "install"   "-y"    "git"   "golang-go"
 
