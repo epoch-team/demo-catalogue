@@ -2,27 +2,17 @@
 #FROM golang:1.7
 FROM golang
 
-COPY . /go/src/github.com/microservices-demo/catalogue
-WORKDIR /go/src/github.com/microservices-demo/catalogue
+#COPY . /go/src/github.com/microservices-demo/catalogue
+#WORKDIR /go/src/github.com/microservices-demo/catalogue
 
-RUN   ls  -l  /usr/bin/apt*
+#RUN   ls  -l  /usr/bin/apt*
 
 RUN   "/usr/bin/apt-get"    "update"
 RUN   "/usr/bin/apt-get"    "install"   "-y"    "ca-certificates"
 COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
 RUN   update-ca-certificates
 
-RUN apt-get update && apt-get remove git -y
-RUN apt update && apt -y install sudo
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt install build-essential autoconf dh-autoreconf libcurl4-openssl-dev \
-  tcl-dev gettext asciidoc docbook2x install-info \
-  libexpat1-dev libz-dev -y
-
-ADD https://raw.githubusercontent.com/paul-nelson-baker/git-openssl-shellscript/master/compile-git-with-openssl.sh .
-RUN bash compile-git-with-openssl.sh -skiptests
-
-#RUN "/usr/bin/apt-get" "upgrade" "-y"
+RUN "/usr/bin/apt-get" "upgrade" "-y"
 RUN git config --global http.postBuffer 524288000
 RUN git config --global core.compression -1
 #RUN git config --global http.postBuffer 64M
