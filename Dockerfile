@@ -1,5 +1,6 @@
 #FROM golang:1.7-alpine3.5
-FROM golang:1.7
+#FROM golang:1.7
+FROM golang
 
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
@@ -19,10 +20,10 @@ RUN   update-ca-certificates
 #RUN apk update
 #RUN apk add git
 
-RUN "/usr/bin/apt-get" "upgrade" "-y"
+#RUN "/usr/bin/apt-get" "upgrade" "-y"
 #RUN git config --global http.postBuffer 524288000
-RUN git config --global http.postBuffer 64M
-RUN git config --system http.postBuffer 64M
+#RUN git config --global http.postBuffer 64M
+#RUN git config --system http.postBuffer 64M
 #ENV GIT_TRACE_PACKET=1
 #ENV GIT_TRACE=1
 #ENV GIT_CURL_VERBOSE=1
