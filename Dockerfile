@@ -29,7 +29,7 @@ RUN git config --system http.postBuffer 16M
 #RUN export GIT_TRACE=1
 #RUN export GIT_CURL_VERBOSE=1
 
-
+RUN go get github.com/golang/protobuf/proto
 
 RUN go get -u github.com/FiloSottile/gvt
 
