@@ -21,6 +21,7 @@ RUN   update-ca-certificates
 
 #RUN git config --global http.postBuffer 524288000
 RUN git config --global http.postBuffer 16M
+RUN git config --system http.postBuffer 16M
 #ENV GIT_TRACE_PACKET=1
 #ENV GIT_TRACE=1
 #ENV GIT_CURL_VERBOSE=1
