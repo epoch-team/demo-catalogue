@@ -1,6 +1,7 @@
 #FROM golang:1.7-alpine3.5
-FROM golang:1.7
+#FROM golang:1.7
 #FROM golang
+FROM Ubuntu:20.04
 
 # gitが通ったら元に戻す
 #COPY . /go/src/github.com/microservices-demo/catalogue
@@ -13,7 +14,9 @@ RUN   "/usr/bin/apt-get"    "install"   "-y"    "ca-certificates"
 COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
 RUN   update-ca-certificates
 
-RUN "/usr/bin/apt-get" "upgrade" "-y"
+RUN   "/usr/bin/apt-get"    "install"   "-y"    "git"   "golang-go"
+
+#RUN "/usr/bin/apt-get" "upgrade" "-y"
 RUN git config --global http.postBuffer 524288000
 RUN git config --global core.compression -1
 #RUN git config --global http.postBuffer 64M
