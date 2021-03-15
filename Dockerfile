@@ -1,21 +1,23 @@
-FROM golang:1.7-alpine3.5
-#FROM golang:1.7
+#FROM golang:1.7-alpine3.5
+FROM golang:1.7
 
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
-#RUN   /usr/bin/apt-get update
-#RUN   /usr/bin/apt-get install -y  ca-certificates
-#COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
-#RUN   update-ca-certificates
+RUN   ls  /usr/bin/
 
-RUN apk add --no-cache ca-certificates && update-ca-certificates
-COPY ZscalerRootCertificate.crt /etc/ssl/certs/ca-certificates.crt
-ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
-ENV SSL_CERT_DIR=/etc/ssl/certs
+RUN   /usr/bin/apt-get update
+RUN   /usr/bin/apt-get install -y  ca-certificates
+COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
+RUN   update-ca-certificates
 
-RUN apk update
-RUN apk add git
+#RUN apk add --no-cache ca-certificates && update-ca-certificates
+#COPY ZscalerRootCertificate.crt /etc/ssl/certs/ca-certificates.crt
+#ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+#ENV SSL_CERT_DIR=/etc/ssl/certs
+
+#RUN apk update
+#RUN apk add git
 
 
 RUN go get -u github.com/FiloSottile/gvt
