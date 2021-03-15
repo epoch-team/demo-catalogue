@@ -4,9 +4,13 @@ COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
 RUN apt-get update
+
 RUN apt-get install -y ca-certificates
+
 COPY ZscalerRootCertificate.crt /usr/local/share/ca-certificates
+
 RUN update-ca-certificates
+
 
 RUN go get -u github.com/FiloSottile/gvt
 
