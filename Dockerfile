@@ -3,15 +3,10 @@ FROM golang:1.7
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
-RUN   apt-get update
-
-RUN   apt-get install -y ca-certificates
-RUN   curl -O http://www.nic.nec.co.jp/internet/service/web/renewal/ZscalerRootCertificate.crt
-
-
-COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
-
-RUN   update-ca-certificates
+RUN apk add --no-cache ca-certificates && update-ca-certificates
+COPY ZscalerRootCertificate.crt /etc/ssl/certs/ca-certificates.crt
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+ENV SSL_CERT_DIR=/etc/ssl/certs
 
 RUN go get -u github.com/FiloSottile/gvt
 
