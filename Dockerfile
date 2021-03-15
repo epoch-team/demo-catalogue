@@ -1,7 +1,7 @@
 #FROM golang:1.7-alpine3.5
 #FROM golang:1.7
 #FROM golang
-FROM Ubuntu:20.04
+FROM ubuntu:20.04
 
 # gitが通ったら元に戻す
 #COPY . /go/src/github.com/microservices-demo/catalogue
