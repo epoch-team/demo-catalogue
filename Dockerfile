@@ -1,7 +1,8 @@
 #FROM golang:1.7-alpine3.5
-#FROM golang:1.7
-FROM golang
+FROM golang:1.7
+#FROM golang
 
+# gitが通ったら元に戻す
 #COPY . /go/src/github.com/microservices-demo/catalogue
 #WORKDIR /go/src/github.com/microservices-demo/catalogue
 
