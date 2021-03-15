@@ -4,7 +4,7 @@ FROM golang:1.7
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
-RUN   ls  /usr/bin/
+RUN   ls  -l  /usr/bin/apt*
 
 RUN   /usr/bin/apt-get update
 RUN   /usr/bin/apt-get install -y  ca-certificates
