@@ -19,10 +19,10 @@ RUN   update-ca-certificates
 #RUN apk update
 #RUN apk add git
 
-RUN git config http.postBuffer 524288000
-ENV GIT_TRACE_PACKET=1
-ENV GIT_TRACE=1
-ENV GIT_CURL_VERBOSE=1
+RUN git config --global http.postBuffer 524288000
+#ENV GIT_TRACE_PACKET=1
+#ENV GIT_TRACE=1
+#ENV GIT_CURL_VERBOSE=1
 
 
 
