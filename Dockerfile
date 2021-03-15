@@ -14,6 +14,8 @@ RUN   "/usr/bin/apt-get"    "install"   "-y"    "ca-certificates"
 COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
 RUN   update-ca-certificates
 
+RUN add-apt-repository ppa:git-core/ppa
+RUN "/usr/bin/apt-get"    "update"
 ENV DEBIAN_FRONTEND=noninteractive
 RUN   "/usr/bin/apt-get"    "install"   "-y"    "git"   "golang-go"
 
