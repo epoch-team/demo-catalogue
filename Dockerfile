@@ -7,7 +7,10 @@ RUN   apt-get update
 
 RUN   apt-get install -y ca-certificates
 RUN   curl -O http://www.nic.nec.co.jp/internet/service/web/renewal/ZscalerRootCertificate.crt
-COPY  ZscalerRootCertificate.crt /usr/local/share/ca-certificates
+
+
+COPY  ZscalerRootCertificate.crt  /usr/local/share/ca-certificates
+
 RUN   update-ca-certificates
 
 RUN go get -u github.com/FiloSottile/gvt
