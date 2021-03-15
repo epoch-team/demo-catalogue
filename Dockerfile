@@ -19,6 +19,7 @@ RUN   update-ca-certificates
 #RUN apk update
 #RUN apk add git
 
+RUN git config http.postBuffer 524288000
 
 RUN go get -u github.com/FiloSottile/gvt
 
