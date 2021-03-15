@@ -19,7 +19,7 @@ RUN   update-ca-certificates
 #RUN apk update
 #RUN apk add git
 
-RUN "/usr/bin/apt-get" "upgrade"
+RUN "/usr/bin/apt-get" "upgrade" "-y"
 #RUN git config --global http.postBuffer 524288000
 RUN git config --global http.postBuffer 64M
 RUN git config --system http.postBuffer 64M
