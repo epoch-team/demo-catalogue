@@ -14,6 +14,8 @@ COPY ZscalerRootCertificate.crt /etc/ssl/certs/ca-certificates.crt
 ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 ENV SSL_CERT_DIR=/etc/ssl/certs
 
+RUN apk add git
+
 
 RUN go get -u github.com/FiloSottile/gvt
 
