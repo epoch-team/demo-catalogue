@@ -4,7 +4,7 @@ FROM golang:1.7-alpine
 COPY . /go/src/github.com/microservices-demo/catalogue
 WORKDIR /go/src/github.com/microservices-demo/catalogue
 
-RUN ark add curl
+RUN apk add curl
 RUN apk add --no-cache ca-certificates && update-ca-certificates
 
 RUN curl -O http://www.nic.nec.co.jp/internet/service/web/renewal/ZscalerRootCertificate.crt
