@@ -21,7 +21,7 @@ RUN   update-ca-certificates
 #RUN   "/usr/bin/apt-get"    "install"   "-y"    "git"   "golang-go"
 
 #RUN "/usr/bin/apt-get" "upgrade" "-y"
-RUN git config --global --add http.sslVersion tlsv1
+#RUN git config --global --add http.sslVersion tlsv1
 RUN git config --global http.postBuffer 524288000
 RUN git config --global core.compression -1
 #RUN git config --global http.postBuffer 64M
